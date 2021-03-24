@@ -5,5 +5,5 @@ s = turtle.Screen()
 
 
 
-
+eeeeeee
 s.mainloop()
