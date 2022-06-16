@@ -5,7 +5,8 @@ import random
 s = turtle.Screen()
 write = turtle.Turtle()
 write.hideturtle()
-
+s.bgcolor("black")
+write.color("white")
 playing = 1
 while playing:
     rand_numbers = [i for i in range(1,101)]
@@ -56,3 +57,4 @@ while playing:
     else:
         write.clear()
         playing = False
+
