@@ -27,7 +27,7 @@ vertical_line = [xcor for xcor in range(-200,181,50)]
 horizontal_line = [ycor for ycor in range(-180,181,20)]
 
 tried = []
-for j in range(2):
+for j in range(10):
     for i in range(-200,181,50):
         x = random.choice(vertical_line)
         y = random.choice(horizontal_line)
@@ -46,7 +46,7 @@ exist = []
 for j in range(len(tried)):
     for i in range(j):
         if tried[i][1] == tried[j][1] and abs(tried[i][0] - tried[j][0]) == 50:
-            print(tried[i][0], tried[i][1], tried[j][0], tried[j][1])
+            # print(tried[i][0], tried[i][1], tried[j][0], tried[j][1])
             exist.append([tried[i][0], tried[i][1]])
             count += 1
 # print(count)
@@ -54,13 +54,18 @@ for j in range(len(tried)):
 # 중복제거
 t.pensize(2)
 t.color("white")
-# print(len(tried))
+print(len(tried))
+# print(exist)
 for i in range(len(exist)):
     t.penup()
-    t.setposition(exist[i][0],exist[i][1])
+    t.setposition(exist[i][0]+1,exist[i][1])
     t.pendown()
-    t.forward(50)
-    del tried[tried.index([exist[i][0],exist[i][1]])]
+    t.forward(48)
+    try:
+        del tried[tried.index([exist[i][0],exist[i][1]])]
+    except:
+        pass
+    # print("test")
 # print(len(tried))
 
 
@@ -73,16 +78,20 @@ player.up()
 player.setposition(-200,200)
 s.delay(1)
 
-print(tried)
+print(len(tried))
 
-# while True:
-#     player.forward(1)
-#     if int(player.ycor()) in [dot for dot in range(35)]:
-#         print("test")
-#         player.setheading(0)
+while True:
+    player.forward(1)
+    # print([int(player.ycor()),int(player.xcor())])
+    if [int(player.ycor()),int(player.xcor())] in tried:
+        print("test")
+        if player.heading() == 0:
+            player.setheading(270)
+        else:
+            player.setheading(0)
 
 
-s.mainloop()
+# s.mainloop()
 
 #
 # import requests
@@ -92,3 +101,6 @@ s.mainloop()
 # data = {'value1': '홍길동', 'value2': '가나다', 'value3': 'ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ'}
 # re = requests.post(url,data = data)
 #
+
+
+# https://infinitt.tistory.com/
